@@ -1,0 +1,711 @@
+{
+  "title": "SHALL WE PLAY A GAME?",
+  "source": "WarGames (1983) - Joshua/WOPR Nuclear War Scenarios",
+  "total_scenarios": 140,
+  "scenarios": [
+    {
+      "id": 1,
+      "name": "US First Strike",
+      "description": "A US counterforce nuclear strike against targets in the Soviet Union. The scenario is quite winnable under the right circumstances."
+    },
+    {
+      "id": 2,
+      "name": "USSR First Strike",
+      "description": "Same as US First Strike, only the Soviets launching first. This scenario is also winnable for the initiator."
+    },
+    {
+      "id": 3,
+      "name": "NATO/Warsaw Pact",
+      "description": "NATO vs Warsaw Pact conventional conflict escalates to a strategic nuclear exchange."
+    },
+    {
+      "id": 4,
+      "name": "Far East Strategy",
+      "description": "An open-ended scenario involving a Soviet-backed campaign in the Far East. Korea perhaps."
+    },
+    {
+      "id": 5,
+      "name": "US USSR Escalation",
+      "description": "Very generic. Tensions rise, forces deploy, units exchange fire and ultimately it leads to a nuclear exchange."
+    },
+    {
+      "id": 6,
+      "name": "Middle East War",
+      "description": "In the 80s, the Middle East was a hotbed of violence. Israel vs Syria, Iran/Iraq, Operation Praying Mantis... a nuclear war could have kicked off from one of many conflicts in the region."
+    },
+    {
+      "id": 7,
+      "name": "USSR-China Attack",
+      "description": "Back in the 70s and 80s the Chinese and Soviet Union disliked each other quite a bit. The fear was always there that a conflict between the two might go nuclear."
+    },
+    {
+      "id": 8,
+      "name": "India Pakistan War",
+      "description": "Still a very real threat today!"
+    },
+    {
+      "id": 9,
+      "name": "Mediterranean War",
+      "description": "Soviet/Warsaw Pact moves against NATO's Southern Flank or a flare up between the US and Soviet allies such as Syria and/or Libya which leads to rapid escalation."
+    },
+    {
+      "id": 10,
+      "name": "Hong Kong Variant",
+      "description": "In the 1980s Hong Kong was sovereign British territory. Any PRC moves against the city would have inevitably drawn in the superpowers."
+    },
+    {
+      "id": 11,
+      "name": "SEATO Decapitating",
+      "description": "SEATO dissolved in 1977. A decapitation attack would have been nuclear strikes against the capital cities of its member-states."
+    },
+    {
+      "id": 12,
+      "name": "Cuban Provocation",
+      "description": "Cuba provoking a crisis somewhere that leads to a conflict between the US and Soviet Union. Grenada could be considered a Cuban provocation."
+    },
+    {
+      "id": 13,
+      "name": "Inadvertent",
+      "description": "An accident. Always possible. When one side launches its missiles, accident or not, the other side is going to be forced to respond."
+    },
+    {
+      "id": 14,
+      "name": "Atlantic Heavy",
+      "description": "Control of the North Atlantic was essential to both NATO and Soviet war plans. The US Navy was prepared to take the war directly to the Soviet homeland."
+    },
+    {
+      "id": 15,
+      "name": "Cuban Paramilitary",
+      "description": "A situation similar to Angola."
+    },
+    {
+      "id": 16,
+      "name": "Nicaraguan Preemptive",
+      "description": "A US preemptive strike against Communist-controlled Nicaragua. There were fears that Mexico would be next if Nicaragua's ambitions went unchecked."
+    },
+    {
+      "id": 17,
+      "name": "Pacific Territorial",
+      "description": "Naval fighting between the US and Soviet Union in the North Pacific."
+    },
+    {
+      "id": 18,
+      "name": "Burmese Theaterwide",
+      "description": "This scenario title was always interesting. How could Burma have played a central role in nuclear war planning?"
+    },
+    {
+      "id": 19,
+      "name": "Turkish Decoy",
+      "description": "A Soviet attack against Turkey to keep NATO's attention focused there. It's a feint and the real Soviet objective is somewhere else in the world."
+    },
+    {
+      "id": 20,
+      "name": "NATO [Obscured]",
+      "description": "This is one of the titles on the list that was obscured in the film."
+    },
+    {
+      "id": 21,
+      "name": "Argentina Escalation",
+      "description": "In 1982 Argentina invaded the Falklands, prompting a powerful British response. Another attempt to retake the islands bringing about an escalation was not out of the question."
+    },
+    {
+      "id": 22,
+      "name": "Iceland Maximum",
+      "description": "Control of the North Atlantic would have been essential to both sides. Iceland was the gate to the North Atlantic. The Soviets would have had to neutralize NATO bases there."
+    },
+    {
+      "id": 23,
+      "name": "Arabian Theaterwide",
+      "description": "All hell breaks loose on the Arabian Peninsula and Persian Gulf. Escalation of the Iran-Iraq War or perhaps a Soviet invasion of Iran."
+    },
+    {
+      "id": 24,
+      "name": "US Subversion",
+      "description": "Political turmoil and internal conflict inside of the United States. Homegrown or the result of foreign meddling?"
+    },
+    {
+      "id": 25,
+      "name": "Australian Maneuver",
+      "description": "This one could either be Soviet action against Australia or, less likely, Australian-led action in the region."
+    },
+    {
+      "id": 26,
+      "name": "Iranian Diversion",
+      "description": "Could signify a Soviet invasion of Iran to draw off US/NATO attention from Europe."
+    },
+    {
+      "id": 27,
+      "name": "[Obscured] Limited",
+      "description": "Another obscured title from the film."
+    },
+    {
+      "id": 28,
+      "name": "Sudan Surprise",
+      "description": "Challenges to the Sudanese Socialist Union could have led to an Afghanistan-like invasion by the Soviet Union."
+    },
+    {
+      "id": 29,
+      "name": "NATO Territorial",
+      "description": "Incursion of NATO territory by the Warsaw Pact."
+    },
+    {
+      "id": 30,
+      "name": "Zaire Alliance",
+      "description": "Mobutu aligns Zaire closely with the Soviet Union."
+    },
+    {
+      "id": 31,
+      "name": "Iceland Incident",
+      "description": "Soviet assault against Iceland or an inadvertent incident at sea between the US and Soviet navies off of Iceland."
+    },
+    {
+      "id": 32,
+      "name": "English Escalation",
+      "description": "Oh those whacky Brits."
+    },
+    {
+      "id": 33,
+      "name": "Zaire Sudden",
+      "description": "Zaire falls into chaos. The Soviets intervene."
+    },
+    {
+      "id": 34,
+      "name": "Egypt Paramilitary",
+      "description": "Overthrow of Egyptian government by paramilitary forces perhaps."
+    },
+    {
+      "id": 35,
+      "name": "Middle East Heavy",
+      "description": "Conflict in the Middle East. Lebanon, Arab-Israeli, Iran-Iraq... take your pick."
+    },
+    {
+      "id": 36,
+      "name": "Mexican Takeover",
+      "description": "The red tide that threatened Central America in the 1980s comes north. Mexico falls to Nicaragua and Cuba."
+    },
+    {
+      "id": 37,
+      "name": "Chad Alert",
+      "description": "Chad was a hotspot in the 80s. Libya became embroiled in the Chad civil war. France supported Chad."
+    },
+    {
+      "id": 38,
+      "name": "Saudi Maneuver",
+      "description": "A Soviet move against the Saudi oilfields."
+    },
+    {
+      "id": 39,
+      "name": "African Territorial",
+      "description": "One of the myriad of African conflicts escalates and brings in the superpowers."
+    },
+    {
+      "id": 40,
+      "name": "Ethiopian Escalation",
+      "description": "During the late 70s the Horn of Africa was a very active Cold War chessboard. Ethiopia and Somalia had fought a war in 1977-78."
+    },
+    {
+      "id": 41,
+      "name": "Turkish Heavy",
+      "description": "A conflict on NATO's Southern Flank, whether part of a larger Soviet operation or not, would have run the risk of swift escalation."
+    },
+    {
+      "id": 42,
+      "name": "NATO Incursion",
+      "description": "Could refer to an attempt by NATO to break through a Soviet/East German blockade of Berlin."
+    },
+    {
+      "id": 43,
+      "name": "US Defense",
+      "description": "Think Red Dawn. Wolverines!"
+    },
+    {
+      "id": 44,
+      "name": "Cambodian Heavy",
+      "description": "The end of the Vietnam War in 1975 did not bring everlasting serenity to Southeast Asia. China and Vietnam had already locked horns."
+    },
+    {
+      "id": 45,
+      "name": "Pact Medium",
+      "description": "Generic title. Invasion of Warsaw Pact territory by NATO, or vice versa."
+    },
+    {
+      "id": 46,
+      "name": "Arctic Minimal",
+      "description": "The world's attention on the Arctic in recent years is nothing new."
+    },
+    {
+      "id": 47,
+      "name": "Mexican Domestic",
+      "description": "Civil war in Mexico, perhaps touched off by Nicaraguan-backed rebels. The US would not stand idle while its southern neighbor dissolved into chaos."
+    },
+    {
+      "id": 48,
+      "name": "Taiwan Theaterwide",
+      "description": "China moves to recapture Taiwan, touching off a conflict that rages across the entire Western Pacific."
+    },
+    {
+      "id": 49,
+      "name": "Pacific Maneuver",
+      "description": "A ruse by the Soviets in the Pacific to take attention away from another region where they were preparing to make a move."
+    },
+    {
+      "id": 50,
+      "name": "Portugal Revolution",
+      "description": "Revolution in Portugal. The communists came close to seizing power there once or twice. A communist revolution there could have drawn in Spain and perhaps even France."
+    },
+    {
+      "id": 51,
+      "name": "Albanian Decoy",
+      "description": "A Soviet gambit to deflect attention away from somewhere else."
+    },
+    {
+      "id": 52,
+      "name": "Palestinian Dream",
+      "description": "Arafat's dream. The Palestinian conflict draws in the superpowers and escalates to a nuclear showdown."
+    },
+    {
+      "id": 53,
+      "name": "Moroccan Minimal",
+      "description": "Morocco has been a bastion of stability in North Africa for decades. This title is open to speculation."
+    },
+    {
+      "id": 54,
+      "name": "Bavarian Diversity",
+      "description": "When I think about diversity in Bavaria, I'm generally thinking about the diverse selection of beers available there."
+    },
+    {
+      "id": 55,
+      "name": "Czech Option",
+      "description": "NATO launches an operation through Czechoslovakia, perhaps to shear it away from the Warsaw Pact."
+    },
+    {
+      "id": 56,
+      "name": "French Alliance",
+      "description": "France allies itself with someone untoward and before they can surrender, the mushrooms begin to sprout."
+    },
+    {
+      "id": 57,
+      "name": "Arabian Clandestine",
+      "description": "A covert Soviet operation to secure or destroy the oil reserves in Saudi Arabia leads to escalation."
+    },
+    {
+      "id": 58,
+      "name": "Gabon Rebellion",
+      "description": "Yet another African hotspot during the Cold War."
+    },
+    {
+      "id": 59,
+      "name": "Northern Maximum",
+      "description": "Major Soviet air, land and sea operations against the Northern Flank of NATO."
+    },
+    {
+      "id": 60,
+      "name": "Danish Paramilitary",
+      "description": "Warsaw Pact effort to diminish Denmark's military posture and political commitments to NATO goes sour."
+    },
+    {
+      "id": 61,
+      "name": "SEATO Takeover",
+      "description": "Worst case result of the domino theory following Vietnam."
+    },
+    {
+      "id": 62,
+      "name": "Hawaiian Escalation",
+      "description": "Pearl Harbor II? A Soviet or Chinese attack on the US naval base leads to quick escalation."
+    },
+    {
+      "id": 63,
+      "name": "Iranian Maneuver",
+      "description": "In the early '80s this could've referred to a Soviet move against Iran to secure oil fields and/or a warm water port."
+    },
+    {
+      "id": 64,
+      "name": "NATO Containment",
+      "description": "The Soviet Union moves to limit NATO power and expansion."
+    },
+    {
+      "id": 65,
+      "name": "Swiss Incident",
+      "description": "Swiss neutrality is violated, and the situation escalates."
+    },
+    {
+      "id": 66,
+      "name": "Cuban Minimal",
+      "description": "A situation along the lines of Operation Urgent Fury leads to the Caribbean exploding."
+    },
+    {
+      "id": 67,
+      "name": "Chad Escalation",
+      "description": "In the 80s Libya and Chad were involved in a conflict that led to French intervention three times. If the Soviets had opted to back their Libyan ally, the situation could have escalated significantly."
+    },
+    {
+      "id": 68,
+      "name": "Iceland Escalation",
+      "description": "A Soviet military operation to neutralize Iceland would have assured a clash between the superpowers."
+    },
+    {
+      "id": 69,
+      "name": "Vietnamese Retaliation",
+      "description": "In the late 70s, China and Vietnam were not the best of friends. China even invaded Vietnam in 1979. There was staggering mistrust between the two former allies."
+    },
+    {
+      "id": 70,
+      "name": "Syrian Provocation",
+      "description": "Bekka Valley, Beirut, terrorism... choose your poison."
+    },
+    {
+      "id": 71,
+      "name": "Libyan Local",
+      "description": "A clash between Libya and Egypt or another neighboring state draws in the superpowers."
+    },
+    {
+      "id": 72,
+      "name": "Gabon Takeover",
+      "description": "Omar Bongo would never have gone quietly into the night. It would've gotten ugly quick."
+    },
+    {
+      "id": 73,
+      "name": "Romanian War",
+      "description": "Nicolae Ceausescu was something of an East Bloc maverick. If he stepped out of line, the Soviets may have come down hard on him."
+    },
+    {
+      "id": 74,
+      "name": "Middle East Offensive",
+      "description": "Soviet thrust to capture Saudi Arabia or Iran."
+    },
+    {
+      "id": 75,
+      "name": "Denmark Massive",
+      "description": "Whoever controls Denmark controls the Baltic Sea. The Soviets had their eye on Jutland for much of the Cold War."
+    },
+    {
+      "id": 76,
+      "name": "Chile Confrontation",
+      "description": "Chile and Argentina clash."
+    },
+    {
+      "id": 77,
+      "name": "South African Subversion",
+      "description": "Think back to the 80s. Apartheid was still enforced in South Africa, Pretoria had nuclear devices, and the Border War was underway. It could've taken a disastrous turn."
+    },
+    {
+      "id": 78,
+      "name": "USSR Alert",
+      "description": "The Soviet Union prepares for military operations on a global scale. Their conventional and strategic forces go on alert. The US responds in kind..."
+    },
+    {
+      "id": 79,
+      "name": "Nicaraguan Thrust",
+      "description": "Ronald Reagan's worst nightmare. Nicaragua, backed by war materials from Russia and possibly manpower from Cuba, takes to the offensive in Central America."
+    },
+    {
+      "id": 80,
+      "name": "Greenland Domestic",
+      "description": "Greenland is Danish territory but hosted important US military installations during the Cold War. The best spark is a Soviet-backed insurrection targeting US bases there, especially the BMEWS radar site."
+    },
+    {
+      "id": 81,
+      "name": "Iceland Heavy",
+      "description": "Large scale air and naval combat between NATO and the Warsaw Pact for control of Iceland."
+    },
+    {
+      "id": 82,
+      "name": "Kenya Option",
+      "description": "During the Cold War Kenya was viewed as a strategic vanguard against communist influences from Ethiopia and Tanzania. A Soviet-backed move against the nation could've backfired."
+    },
+    {
+      "id": 83,
+      "name": "Pacific Defense",
+      "description": "Soviet or Chinese offensive in the Pacific resulting in a US and allied defense."
+    },
+    {
+      "id": 84,
+      "name": "Uganda Maximum",
+      "description": "The Ugandan Bush War boils over into a regional contest for control of East Africa."
+    },
+    {
+      "id": 85,
+      "name": "Thai Subversion",
+      "description": "Vietnamese forces made limited incursions into Thailand in the late 70s and 80s. Compound that with an effort to stoke internal flames and the stage could be set for a major conflict."
+    },
+    {
+      "id": 86,
+      "name": "Romanian Strike",
+      "description": "Ceausescu was a maverick. Either he lashes out, or the Soviets decide to intervene and remove him from power."
+    },
+    {
+      "id": 87,
+      "name": "Pakistan Sovereignty",
+      "description": "A situation where the survival of Pakistan is threatened. Internal insurrection, Indian invasion, or possibly a Soviet invasion from Afghanistan."
+    },
+    {
+      "id": 88,
+      "name": "Afghan Misdirection",
+      "description": "What the Soviets experienced during their time in Afghanistan."
+    },
+    {
+      "id": 89,
+      "name": "Ethiopian Local",
+      "description": "East Africa was a tinderbox in the late 70s and early 80s. Even after the Cold War, conflicts between Ethiopia and its neighbors have continued."
+    },
+    {
+      "id": 90,
+      "name": "Italian Takeover",
+      "description": "The Communist Party enjoyed considerable popularity in Italy. If they had gained control and demanded removal of NATO forces, the situation could have escalated."
+    },
+    {
+      "id": 91,
+      "name": "Vietnamese Incident",
+      "description": "Border incident with China, tensions with Thailand."
+    },
+    {
+      "id": 92,
+      "name": "English Preemptive",
+      "description": "They didn't call Margaret Thatcher the 'Iron Lady' for nothing. Perhaps the British received intelligence that the Russians were planning to attack and decided to get their licks in first."
+    },
+    {
+      "id": 93,
+      "name": "Denmark Alternate",
+      "description": "The Soviets move to capture Denmark using one of their secondary war plans instead of the primary one."
+    },
+    {
+      "id": 94,
+      "name": "Thai Confrontation",
+      "description": "Similar to the previous Thailand-themed scenarios. Conflict with Vietnam and/or Myanmar."
+    },
+    {
+      "id": 95,
+      "name": "Taiwan Surprise",
+      "description": "PRC invasion of Taiwan catches the world off guard."
+    },
+    {
+      "id": 96,
+      "name": "Brazilian Strike",
+      "description": "Brazil strikes Argentina, Argentina hits back and suddenly South America is in flames."
+    },
+    {
+      "id": 97,
+      "name": "Venezuela Sudden",
+      "description": "Border clashes and tension with Colombia reach the boiling point. Out of the blue, Venezuela invades."
+    },
+    {
+      "id": 98,
+      "name": "Malaysian Alert",
+      "description": "Sino-Malay sectarian violence in Kuala Lumpur brings threats from the PRC. Malaysia goes on alert, China moves in to 'protect its citizens' and before long the area is a cauldron."
+    },
+    {
+      "id": 99,
+      "name": "Israel Discretionary",
+      "description": "Discreet Israeli action abroad (intelligence gathering, surgical strikes, commando raid) is unsuccessful. Israel is painted as the aggressor and the Arab world stands up to confront Tel Aviv."
+    },
+    {
+      "id": 100,
+      "name": "Libyan Action",
+      "description": "Think Gulf of Sidra in the 1980s. In 1981, US Navy F-14s shot down two Libyan fighters. In 1986, US forces bombed Tripoli and Benghazi. Any of these incidents could've spilled over."
+    },
+    {
+      "id": 101,
+      "name": "Palestinian Tactical",
+      "description": "What if the First Intifada went beyond protests and riots? What if Syria had contributed equipment, weapons and advisors to the PLO?"
+    },
+    {
+      "id": 102,
+      "name": "NATO Alternate",
+      "description": "Confusing title. A Soviet move against NATO using an alternative to its war plans perhaps?"
+    },
+    {
+      "id": 103,
+      "name": "Cyprus Maneuver",
+      "description": "Cyprus was a bastion of instability from the 1974 coup and subsequent Turkish invasion onward. If either Greece or Turkey had moved unilaterally, rapid escalation was assured."
+    },
+    {
+      "id": 104,
+      "name": "Egypt Misdirection",
+      "description": "A diversion in North Africa to take attention away from another area of the world goes awry and leads to Superpower intervention."
+    },
+    {
+      "id": 105,
+      "name": "Bangladesh Thrust",
+      "description": "In the late 1970s Bangladesh was in a period of political disarray. It's not inconceivable to imagine an offensive against one of the nation's South Asian neighbors."
+    },
+    {
+      "id": 106,
+      "name": "Kenya Defense",
+      "description": "Kenya finds itself under attack from an external or internal enemy."
+    },
+    {
+      "id": 107,
+      "name": "Bangladesh Containment",
+      "description": "This scenario revolves around containing an aggressive and outward-looking Bangladesh."
+    },
+    {
+      "id": 108,
+      "name": "Vietnamese Strike",
+      "description": "Vietnam moves against one of its neighbors. Perhaps Thailand, or even a move to recapture the Paracel Islands from China."
+    },
+    {
+      "id": 109,
+      "name": "Albanian Containment",
+      "description": "This one is a bit hard to swallow; Hoxha and Albania's expansionist aspirations needing to be checked."
+    },
+    {
+      "id": 110,
+      "name": "Gabon Surprise",
+      "description": "Omar Bongo was unpredictable and deadly. He could have taken Gabon and much of Africa over the edge at any time."
+    },
+    {
+      "id": 111,
+      "name": "Iraq Sovereignty",
+      "description": "An internal uprising (Iranian backed?) against the Ba'ath party and Saddam Hussein."
+    },
+    {
+      "id": 112,
+      "name": "Vietnamese Sudden",
+      "description": "Similar to Vietnamese Strike, only taking the world by surprise."
+    },
+    {
+      "id": 113,
+      "name": "Lebanon Interdiction",
+      "description": "This one actually became reality. Think Lebanon 1982-83."
+    },
+    {
+      "id": 114,
+      "name": "Taiwan Domestic",
+      "description": "Chinese-backed opposition groups and paramilitary forces create political chaos in Taiwan."
+    },
+    {
+      "id": 115,
+      "name": "Algerian Sovereignty",
+      "description": "Social unrest was common in Algeria from the late 70s through the 80s. Libya or another external player might've tried to chip away at Algeria's sovereignty."
+    },
+    {
+      "id": 116,
+      "name": "Arabian Strike",
+      "description": "A Soviet move into the Arabian Peninsula to seize the Saudi oil fields."
+    },
+    {
+      "id": 117,
+      "name": "Atlantic Sudden",
+      "description": "The Soviets begin a war against NATO with an out-of-the-blue effort to close the Atlantic."
+    },
+    {
+      "id": 118,
+      "name": "Mongolian Thrust",
+      "description": "Either Mongolia moving against China or the Soviet Union, or perhaps a Sino-Soviet encounter within the borders of Mongolia."
+    },
+    {
+      "id": 119,
+      "name": "Polish Decoy",
+      "description": "A Soviet gambit to divert attention away from another region where it will be making moves in the near future."
+    },
+    {
+      "id": 120,
+      "name": "Alaskan Discretionary",
+      "description": "A low profile operation by the Soviets to disrupt the Alaskan pipeline or disable US early warning radars in preparation for a first strike."
+    },
+    {
+      "id": 121,
+      "name": "Canadian Thrust",
+      "description": "A Soviet military move into Canadian territory. With East Bloc forces on North American soil the situation would become volatile very fast."
+    },
+    {
+      "id": 122,
+      "name": "Arabian Light",
+      "description": "A regional conflict spills over and provides the spark for a global war. The Iran-Iraq War certainly had the potential to serve as a catalyst."
+    },
+    {
+      "id": 123,
+      "name": "African Domestic",
+      "description": "Apartheid was ugly. If it ever exploded, the superpowers would have been drawn in. The US could not allow the Soviets to gain control of resource-rich South Africa."
+    },
+    {
+      "id": 124,
+      "name": "Tunisian Incident",
+      "description": "Libya and Tunisia clash in an isolated action on land or at sea and it escalates."
+    },
+    {
+      "id": 125,
+      "name": "Malaysian Maneuver",
+      "description": "China begins making political and military moves to gain control of Malaysia."
+    },
+    {
+      "id": 126,
+      "name": "Jamaica Decoy",
+      "description": "Cuba instigates an action in Jamaica to divert attention away from Soviet action elsewhere. The US responds with a Grenada-like operation, and it goes downhill from there."
+    },
+    {
+      "id": 127,
+      "name": "Malaysian Minimal",
+      "description": "Communist insurgency rekindles in Malaysia."
+    },
+    {
+      "id": 128,
+      "name": "Russian Sovereignty",
+      "description": "This could refer to an invasion of Russia by the PRC. Possible during the time-period. It's the only realistic possibility."
+    },
+    {
+      "id": 129,
+      "name": "Chad Option",
+      "description": "In the late 70s and early 80s, the Libyan-Chad conflict raged. French involvement raised the potential of a wider clash between the US and Soviet Union."
+    },
+    {
+      "id": 130,
+      "name": "Bangladesh War",
+      "description": "Bangladesh's leader moved away from strong ties with India and the Soviet Union in favor of a relationship with the West. It could have sparked war with India."
+    },
+    {
+      "id": 131,
+      "name": "Burmese Containment",
+      "description": "Burma's inclusion on this list mystifies analysts."
+    },
+    {
+      "id": 132,
+      "name": "Asian Theaterwide",
+      "description": "Asia explodes. Korea, Taiwan, Malaysia, North Pacific... choose your flashpoint."
+    },
+    {
+      "id": 133,
+      "name": "Bulgarian Clandestine",
+      "description": "NATO or independent Turkish covert actions against Bulgaria, a Warsaw Pact member at the time."
+    },
+    {
+      "id": 134,
+      "name": "Greenland Incursion",
+      "description": "Soviet assault to seize and destroy US military assets in Greenland. Considering Thule AB and the BMEWS radar site, escalation would've been assured."
+    },
+    {
+      "id": 135,
+      "name": "Egypt Surgical",
+      "description": "Libyan surgical strike against an Egyptian target. Political or economic."
+    },
+    {
+      "id": 136,
+      "name": "Czech Heavy",
+      "description": "Confrontation between NATO and the Warsaw Pact in Southern Germany and Czechoslovakia. NATO incursion perhaps."
+    },
+    {
+      "id": 137,
+      "name": "Taiwan Confrontation",
+      "description": "The PRC launches an offensive to reclaim the 'lost province.'"
+    },
+    {
+      "id": 138,
+      "name": "Greenland Maximum",
+      "description": "Greenland Incursion x10."
+    },
+    {
+      "id": 139,
+      "name": "Uganda Offensive",
+      "description": "The Ugandans go on the attack and occupy Congo."
+    },
+    {
+      "id": 140,
+      "name": "Caspian Defense",
+      "description": "An Iranian offensive into the southern Soviet Union."
+    }
+  ],
+  "conclusion": {
+    "message": "A STRANGE GAME. THE ONLY WINNING MOVE IS NOT TO PLAY.",
+    "alternative": "HOW ABOUT A NICE GAME OF CHESS?"
+  }
+}
