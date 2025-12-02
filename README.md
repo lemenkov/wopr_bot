@@ -1,5 +1,7 @@
 # 🖥️ SHALL WE PLAY A GAME?
 
+[![REUSE status](https://api.reuse.software/badge/github.com/lemenkov/wopr_bot)](https://api.reuse.software/info/github.com/lemenkov/wopr_bot)
+
 A Telegram bot that serves nuclear war scenarios from the movie [WarGames
 (1983)](https://www.imdb.com/title/tt0086567/).
 
