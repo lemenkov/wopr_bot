@@ -28,6 +28,20 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+# Suppress noisy HTTP library logging
+logging.getLogger("httpx").setLevel(logging.WARNING)
+logging.getLogger("httpcore").setLevel(logging.WARNING)
+
+
+def log_command(update: Update, command: str, extra: str = "") -> None:
+    """Log command usage with user info."""
+    user = update.effective_user
+    chat = update.effective_chat
+    user_info = f"@{user.username}" if user.username else f"id:{user.id}"
+    chat_info = f"chat:{chat.id}" if chat else ""
+    extra_info = f" [{extra}]" if extra else ""
+    logger.info(f"/{command} from {user_info} ({user.first_name}) {chat_info}{extra_info}")
+
 # Load scenarios from JSON file
 SCRIPT_DIR = Path(__file__).parent
 SCENARIOS_FILE = SCRIPT_DIR / "scenarios.json"
@@ -86,6 +100,7 @@ JOSHUA_QUOTES = [
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Send a greeting when /start is issued."""
+    log_command(update, "start")
     welcome_message = f"""
 {WOPR_HEADER}
 🎮 *SHALL WE PLAY A GAME?*
@@ -107,6 +122,7 @@ _"The only winning move is not to play."_
 
 async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Send help information."""
+    log_command(update, "help")
     help_text = """
 🖥️ *JOSHUA COMMAND INTERFACE*
 
@@ -134,6 +150,7 @@ async def scenario(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
             scenario_num = int(context.args[0])
             if 1 <= scenario_num <= len(SCENARIOS):
                 selected = SCENARIOS[scenario_num - 1]
+                log_command(update, "scenario", f"#{scenario_num}: {selected['name']}")
             else:
                 await update.message.reply_text(
                     f"⚠️ Invalid scenario number. Please choose 1-{len(SCENARIOS)}."
@@ -148,6 +165,7 @@ async def scenario(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     else:
         # Random scenario
         selected = random.choice(SCENARIOS)
+        log_command(update, "scenario", f"random -> #{selected['id']}: {selected['name']}")
 
     # Send WOPR video first
     video_path = SCRIPT_DIR / "wopr.mp4"
@@ -173,6 +191,7 @@ async def scenario(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 
 async def list_scenarios(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """List all scenario names."""
+    log_command(update, "list")
 
     # Split into chunks to avoid message length limits
     chunk_size = 35
@@ -193,6 +212,7 @@ async def list_scenarios(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
 async def quote(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Send a random Joshua quote."""
     selected_quote = random.choice(JOSHUA_QUOTES)
+    log_command(update, "quote", selected_quote[:30] + "...")
 
     message = f"""
 ```
