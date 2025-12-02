@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+# SPDX-FileCopyrightText: © 2025 Peter Lemenkov
+#
+# SPDX-License-Identifier: MIT
 """
 SHALL WE PLAY A GAME?
 
@@ -243,7 +246,7 @@ async def unknown(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 def main() -> None:
     """Start the bot."""
 
-    # ⚠️ IMPORTANT: Replace with your actual bot token from @BotFather
+    # Replace with your bot token from @BotFather
     BOT_TOKEN = "YOUR_BOT_TOKEN_HERE"
 
     # Create the Application

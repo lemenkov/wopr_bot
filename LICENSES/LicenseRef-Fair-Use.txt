@@ -1,0 +1,16 @@
+FAIR USE NOTICE
+
+This file contains content from the film WarGames (1983) and is included
+under the Fair Use doctrine (17 U.S.C. § 107) for purposes of commentary,
+criticism, education, and fan appreciation.
+
+This is a non-commercial fan project.
+
+The film WarGames is © 1983 MGM/UA Entertainment Co.
+All trademarks belong to their respective owners.
+
+This Fair Use notice applies to:
+- scenarios.json: Nuclear war scenario names and educational descriptions
+- wopr.mp4: Brief clip of the WOPR computer display
+
+These files are NOT licensed for redistribution outside of Fair Use provisions.
