@@ -95,6 +95,7 @@ scenarios, learning that they all result in mutual destruction, leading to the
 famous conclusion:
 
 > *"A STRANGE GAME. THE ONLY WINNING MOVE IS NOT TO PLAY."*
+> 
 > *"HOW ABOUT A NICE GAME OF CHESS?"*
 
 ## 📚 Scenario Sources
