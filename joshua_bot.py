@@ -17,6 +17,7 @@ Usage:
     /quote - Get Joshua's famous quote
 """
 
+import asyncio
 import json
 import random
 import logging
@@ -266,4 +267,9 @@ def main() -> None:
 
 
 if __name__ == "__main__":
+    # Ensure event loop exists (required for Python 3.10+, harmless on older versions)
+    try:
+        asyncio.get_event_loop()
+    except RuntimeError:
+        asyncio.set_event_loop(asyncio.new_event_loop())
     main()
