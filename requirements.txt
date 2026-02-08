@@ -1,4 +1,6 @@
 # SPDX-FileCopyrightText: © 2025 Peter Lemenkov
 #
 # SPDX-License-Identifier: MIT
+
 python-telegram-bot>=20.0
+aiohttp>=3.8.0

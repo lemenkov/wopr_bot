@@ -5,8 +5,8 @@
 """
 SHALL WE PLAY A GAME?
 
-A Telegram bot that serves nuclear war scenarios from the movie WarGames (1983).
-Joshua/WOPR will share its wisdom about Global Thermonuclear War.
+A Telegram bot that serves nuclear war scenarios from the movie WarGames
+(1983). Joshua/WOPR will share its wisdom about Global Thermonuclear War.
 
 Usage:
     /start - Greet the user (Joshua style)
@@ -22,6 +22,8 @@ import json
 import random
 import logging
 from pathlib import Path
+
+import aiohttp
 from telegram import Update
 from telegram.ext import Application, CommandHandler, ContextTypes
 
@@ -36,15 +38,19 @@ logger = logging.getLogger(__name__)
 logging.getLogger("httpx").setLevel(logging.WARNING)
 logging.getLogger("httpcore").setLevel(logging.WARNING)
 
+# Ollama configuration
+OLLAMA_URL = "http://localhost:11434/api/generate"
+OLLAMA_MODEL = "llama3.2:3b"
+
 
 def log_command(update: Update, command: str, extra: str = "") -> None:
     """Log command usage with user info."""
     user = update.effective_user
     chat = update.effective_chat
-    user_info = f"@{user.username}" if user.username else f"id:{user.id}"
-    chat_info = f"chat:{chat.id}" if chat else ""
+    username = f"@{user.username}" if user.username else "no_username"
+    chat_info = f" chat:{chat.id}" if chat else ""
     extra_info = f" [{extra}]" if extra else ""
-    logger.info(f"/{command} from {user_info} ({user.first_name}) {chat_info}{extra_info}")
+    logger.info(f"/{command} from {username} (id:{user.id}, {user.first_name}){chat_info}{extra_info}")
 
 # Load scenarios from JSON file
 SCRIPT_DIR = Path(__file__).parent
@@ -115,6 +121,7 @@ I have {len(SCENARIOS)} nuclear war scenarios in my database.
 *Available Commands:*
 /scenario - Random nuclear war scenario
 /scenario `<1-140>` - Specific scenario
+/describe `<1-140>` - AI analysis of scenario
 /list - List all scenarios
 /quote - Words of wisdom
 /help - Show this message
@@ -133,6 +140,7 @@ async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> No
 /start - Initialize WOPR greeting
 /scenario - Execute random war simulation
 /scenario `<number>` - Execute specific scenario (1-140)
+/describe `<number>` - AI analysis of scenario (1-140)
 /list - Display all scenario designations
 /quote - Retrieve WOPR wisdom
 /help - Display this interface
@@ -231,6 +239,82 @@ _{selected_quote}_
     await update.message.reply_text(message, parse_mode="Markdown")
 
 
+async def describe(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    """Get AI-generated description of a specific scenario using Ollama."""
+
+    if not context.args:
+        await update.message.reply_text(
+            "⚠️ Please provide a scenario number. Example: `/describe 11`",
+            parse_mode="Markdown"
+        )
+        return
+
+    try:
+        scenario_num = int(context.args[0])
+        if not 1 <= scenario_num <= len(SCENARIOS):
+            await update.message.reply_text(
+                f"⚠️ Invalid scenario number. Please choose 1-{len(SCENARIOS)}."
+            )
+            return
+    except ValueError:
+        await update.message.reply_text(
+            "⚠️ Please provide a valid number. Example: `/describe 11`",
+            parse_mode="Markdown"
+        )
+        return
+
+    selected = SCENARIOS[scenario_num - 1]
+    log_command(update, "describe", f"#{scenario_num}: {selected['name']}")
+
+    # Send "thinking" message
+    thinking_msg = await update.message.reply_text("🖥️ *W.O.P.R. ANALYZING SCENARIO...*", parse_mode="Markdown")
+
+    prompt = f"""You are a Cold War military analyst in 1983. Briefly describe this nuclear war scenario in 2-3 sentences: "{selected['name']}".
+
+Context: This is a WOPR computer simulation from the early 1980s. Use ONLY the geopolitical situation of the 1980s - the Soviet Union, Warsaw Pact, NATO, Cold War tensions, Reagan era, etc. Do NOT reference any events or situations after 1983."""
+
+    try:
+        async with aiohttp.ClientSession() as session:
+            async with session.post(
+                OLLAMA_URL,
+                json={
+                    "model": OLLAMA_MODEL,
+                    "prompt": prompt,
+                    "stream": False
+                },
+                timeout=aiohttp.ClientTimeout(total=60)
+            ) as response:
+                if response.status == 200:
+                    result = await response.json()
+                    ai_description = result.get("response", "No response generated.")
+                else:
+                    ai_description = f"Error: Ollama returned status {response.status}"
+    except aiohttp.ClientConnectorError:
+        ai_description = "Error: Cannot connect to Ollama. Is it running on localhost:11434?"
+    except asyncio.TimeoutError:
+        ai_description = "Error: Ollama request timed out."
+    except Exception as e:
+        ai_description = f"Error: {str(e)}"
+        logger.error(f"Ollama error: {e}")
+
+    # Delete "thinking" message
+    await thinking_msg.delete()
+
+    message = f"""
+```
++------------------------------------------+
+|  SCENARIO #{selected['id']:03d} ANALYSIS                  |
++------------------------------------------+
+```
+*{selected['name']}*
+
+{ai_description}
+
+_Analysis provided by W.O.P.R. AI subsystem_
+"""
+    await update.message.reply_text(message, parse_mode="Markdown")
+
+
 async def unknown(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Handle unknown commands."""
     await update.message.reply_text(
@@ -259,6 +343,7 @@ def main() -> None:
     application.add_handler(CommandHandler("scenario", scenario))
     application.add_handler(CommandHandler("list", list_scenarios))
     application.add_handler(CommandHandler("quote", quote))
+    application.add_handler(CommandHandler("describe", describe))
 
     # Start the Bot
     print("🖥️  WOPR ONLINE - SHALL WE PLAY A GAME?")

@@ -2,8 +2,7 @@
 
 [![REUSE status](https://api.reuse.software/badge/github.com/lemenkov/wopr_bot)](https://api.reuse.software/info/github.com/lemenkov/wopr_bot)
 
-A Telegram bot that serves nuclear war scenarios from the movie [WarGames
-(1983)](https://www.imdb.com/title/tt0086567/).
+A Telegram bot that serves nuclear war scenarios from the movie [WarGames (1983)](https://www.imdb.com/title/tt0086567/).
 
 Joshua (WOPR) will share its 140 Global Thermonuclear War scenarios with you.
 
@@ -21,6 +20,7 @@ Joshua (WOPR) will share its 140 Global Thermonuclear War scenarios with you.
 - `/help` - Show available commands
 - `/scenario` - Get a random nuclear war scenario
 - `/scenario <number>` - Get a specific scenario (1-140)
+- `/describe <number>` - Get AI-generated analysis of a scenario (requires Ollama)
 - `/list` - List all 140 scenario names
 - `/quote` - Get Joshua's famous quotes
 
@@ -59,6 +59,20 @@ You should see:
 Press Ctrl+C to stop.
 ```
 
+### 5. (Optional) Set up Ollama for `/describe` command
+
+The `/describe` command uses [Ollama](https://ollama.ai/) to generate AI analysis of scenarios.
+
+```bash
+# Install Ollama (see https://ollama.ai/)
+# Then pull the model:
+ollama pull llama3.2:3b
+
+# Ollama should be running on localhost:11434
+```
+
+You can change the model by editing `OLLAMA_MODEL` in `joshua_bot.py`.
+
 ## 📁 Files
 
 ```
@@ -80,24 +94,23 @@ wopr_bot/
 ```
 **SEATO Decapitating**
 
-SEATO dissolved in 1977. A decapitation attack would have been nuclear strikes
-against the capital cities of its member-states.
+SEATO dissolved in 1977. A decapitation attack would have been
+nuclear strikes against the capital cities of its member-states.
 
 *WINNER: NONE*
 
 ## 🎬 About WarGames (1983)
 
-[WarGames](https://www.imdb.com/title/tt0086567/) is a 1983 American
-techno-thriller film starring Matthew Broderick as David Lightman, a young
-hacker who accidentally accesses WOPR (War Operation Plan Response), a United
-States military supercomputer programmed to simulate nuclear war scenarios.
+[WarGames](https://www.imdb.com/title/tt0086567/) is a 1983 American techno-thriller
+film starring Matthew Broderick as David Lightman, a young hacker who accidentally
+accesses WOPR (War Operation Plan Response), a United States military supercomputer
+programmed to simulate nuclear war scenarios.
 
-In the film's climax, WOPR/Joshua cycles through all 140+ nuclear war
-scenarios, learning that they all result in mutual destruction, leading to the
-famous conclusion:
+In the film's climax, WOPR/Joshua cycles through all 140+ nuclear war scenarios,
+learning that they all result in mutual destruction, leading to the famous conclusion:
 
 > *"A STRANGE GAME. THE ONLY WINNING MOVE IS NOT TO PLAY."*
-> 
+>
 > *"HOW ABOUT A NICE GAME OF CHESS?"*
 
 ## 📚 Scenario Sources
@@ -114,17 +127,16 @@ The bot source code (`joshua_bot.py`, `requirements.txt`) is released under the
 
 ### Movie Content (Fair Use)
 
-The following files contain content from [WarGames
-(1983)](https://www.imdb.com/title/tt0086567/) and are included under [Fair
-Use](https://en.wikipedia.org/wiki/Fair_use) doctrine for purposes of
-commentary, education, and fan appreciation:
+The following files contain content from [WarGames (1983)](https://www.imdb.com/title/tt0086567/)
+and are included under [Fair Use](https://en.wikipedia.org/wiki/Fair_use) doctrine
+for purposes of commentary, education, and fan appreciation:
 
-- **`scenarios.json`** — List of nuclear war scenario names visible in the
-  film, with educational descriptions explaining their Cold War context
+- **`scenarios.json`** — List of nuclear war scenario names visible in the film,
+  with educational descriptions explaining their Cold War context
 - **`wopr.mp4`** — Brief clip of the WOPR computer display from the film
 
-This is a non-commercial fan project. The film WarGames is © 1983 MGM/UA
-Entertainment.  All trademarks belong to their respective owners.
+This is a non-commercial fan project. The film WarGames is © 1983 MGM/UA Entertainment.
+All trademarks belong to their respective owners.
 
 ## ⚠️ Disclaimer
 
