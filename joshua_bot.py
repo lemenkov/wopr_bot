@@ -37,6 +37,7 @@ logger = logging.getLogger(__name__)
 # Suppress noisy HTTP library logging
 logging.getLogger("httpx").setLevel(logging.WARNING)
 logging.getLogger("httpcore").setLevel(logging.WARNING)
+logging.getLogger("telegram.ext._utils.networkloop").setLevel(logging.WARNING)
 
 # Ollama configuration
 OLLAMA_URL = "http://localhost:11434/api/generate"
@@ -324,6 +325,19 @@ async def unknown(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     )
 
 
+async def error_handler(update: object, context: ContextTypes.DEFAULT_TYPE) -> None:
+    """Handle errors - silently ignore network issues, log others."""
+    import telegram.error
+
+    # Network errors are expected during connectivity issues - just log briefly
+    if isinstance(context.error, telegram.error.NetworkError):
+        logger.warning(f"Network error (will retry): {context.error}")
+        return
+
+    # Log other errors fully
+    logger.error(f"Exception while handling an update: {context.error}")
+
+
 # ============================================================================
 # Main Entry Point
 # ============================================================================
@@ -345,10 +359,16 @@ def main() -> None:
     application.add_handler(CommandHandler("quote", quote))
     application.add_handler(CommandHandler("describe", describe))
 
+    # Register error handler
+    application.add_error_handler(error_handler)
+
     # Start the Bot
     print("🖥️  WOPR ONLINE - SHALL WE PLAY A GAME?")
     print("Press Ctrl+C to stop.")
-    application.run_polling(allowed_updates=Update.ALL_TYPES)
+    application.run_polling(
+        allowed_updates=Update.ALL_TYPES,
+        drop_pending_updates=True
+    )
 
 
 if __name__ == "__main__":
