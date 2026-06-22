@@ -346,7 +346,7 @@ def main() -> None:
     """Start the bot."""
 
     # Replace with your bot token from @BotFather
-    BOT_TOKEN = "YOUR_BOT_TOKEN_HERE"
+    BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN")
 
     # Create the Application
     application = Application.builder().token(BOT_TOKEN).build()
