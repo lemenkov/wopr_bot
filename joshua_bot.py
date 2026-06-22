@@ -21,6 +21,7 @@ import asyncio
 import json
 import random
 import logging
+import os
 from pathlib import Path
 
 import aiohttp
@@ -43,6 +44,11 @@ logging.getLogger("telegram.ext._utils.networkloop").setLevel(logging.WARNING)
 OLLAMA_URL = "http://localhost:11434/api/generate"
 OLLAMA_MODEL = "llama3.2:3b"
 
+BACKEND = os.environ.get("BACKEND", "ollama").lower()
+
+DEEPSEEK_URL = "https://api.deepseek.com/v1/chat/completions"
+DEEPSEEK_MODEL = "deepseek-chat"
+DEEPSEEK_API_KEY = os.environ.get("DEEPSEEK_API_KEY")
 
 def log_command(update: Update, command: str, extra: str = "") -> None:
     """Log command usage with user info."""
@@ -270,33 +276,64 @@ async def describe(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     # Send "thinking" message
     thinking_msg = await update.message.reply_text("🖥️ *W.O.P.R. ANALYZING SCENARIO...*", parse_mode="Markdown")
 
-    prompt = f"""You are a Cold War military analyst in 1983. Briefly describe this nuclear war scenario in 2-3 sentences: "{selected['name']}".
+    ollama_prompt = f"""You are a Cold War military analyst in 1983. Briefly describe this nuclear war scenario in 2-3 sentences: "{selected['name']}".
 
 Context: This is a WOPR computer simulation from the early 1980s. Use ONLY the geopolitical situation of the 1980s - the Soviet Union, Warsaw Pact, NATO, Cold War tensions, Reagan era, etc. Do NOT reference any events or situations after 1983."""
+
+    SYSTEM_PROMPT = """You are a Cold War military analyst in 1983. You specialize in nuclear war scenarios and WOPR computer simulations. This is a WOPR computer simulation from the early 1980s. Use ONLY the geopolitical situation of the 1980s - the Soviet Union, Warsaw Pact, NATO, Cold War tensions, Reagan era, etc. Do NOT reference any events or situations after 1983."""
+    user_prompt = f'Briefly describe this nuclear war scenario in 2-3 sentences: "{selected['name']}'
+
+    if BACKEND == "deepseek":
+        URL = DEEPSEEK_URL
+        HEADERS = {
+            "Authorization": f"Bearer {DEEPSEEK_API_KEY}",
+            "Content-Type": "application/json"
+        }
+        PAYLOAD = {
+            "model": DEEPSEEK_MODEL,
+            "messages": [
+                {"role": "system", "content": SYSTEM_PROMPT},  # можно тот же системный промпт
+                {"role": "user", "content": user_prompt}  # но тогда пользовательский промпт должен быть без системной части
+            ],
+            "temperature": 0.3,
+            "max_tokens": 150
+        }
+    else:
+        URL = OLLAMA_URL
+        HEADERS = {
+            "Content-Type": "application/json"
+        }
+        PAYLOAD = {
+            "model": OLLAMA_MODEL,
+            "prompt": prompt,   # для Ollama используем prompt
+            "temperature": 0.3,
+            "max_tokens": 150,
+            "stream": False
+        }
 
     try:
         async with aiohttp.ClientSession() as session:
             async with session.post(
-                OLLAMA_URL,
-                json={
-                    "model": OLLAMA_MODEL,
-                    "prompt": prompt,
-                    "stream": False
-                },
+                URL,
+                headers=HEADERS,
+                json=PAYLOAD,
                 timeout=aiohttp.ClientTimeout(total=60)
             ) as response:
                 if response.status == 200:
                     result = await response.json()
-                    ai_description = result.get("response", "No response generated.")
+                    if BACKEND == "deepseek":
+                        ai_description = result["choices"][0]["message"]["content"].strip()
+                    else:
+                        ai_description = result.get("response", "No response generated.")
                 else:
-                    ai_description = f"Error: Ollama returned status {response.status}"
+                    ai_description = f"Error: {BACKEND} returned status {response.status}"
     except aiohttp.ClientConnectorError:
-        ai_description = "Error: Cannot connect to Ollama. Is it running on localhost:11434?"
+        ai_description = "Error: Cannot connect to {BACKEND}. Is it running on {URL}?"
     except asyncio.TimeoutError:
-        ai_description = "Error: Ollama request timed out."
+        ai_description = "Error: {BACKEND} request timed out."
     except Exception as e:
         ai_description = f"Error: {str(e)}"
-        logger.error(f"Ollama error: {e}")
+        logger.error(f"{BACKEND} error: {e}")
 
     # Delete "thinking" message
     await thinking_msg.delete()
