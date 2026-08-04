@@ -30,8 +30,7 @@ from telegram.ext import Application, CommandHandler, ContextTypes
 
 # Enable logging
 logging.basicConfig(
-    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
-    level=logging.INFO
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO
 )
 logger = logging.getLogger(__name__)
 
@@ -50,6 +49,7 @@ DEEPSEEK_URL = "https://api.deepseek.com/v1/chat/completions"
 DEEPSEEK_MODEL = "deepseek-chat"
 DEEPSEEK_API_KEY = os.environ.get("DEEPSEEK_API_KEY")
 
+
 def log_command(update: Update, command: str, extra: str = "") -> None:
     """Log command usage with user info."""
     user = update.effective_user
@@ -57,16 +57,21 @@ def log_command(update: Update, command: str, extra: str = "") -> None:
     username = f"@{user.username}" if user.username else "no_username"
     chat_info = f" chat:{chat.id}" if chat else ""
     extra_info = f" [{extra}]" if extra else ""
-    logger.info(f"/{command} from {username} (id:{user.id}, {user.first_name}){chat_info}{extra_info}")
+    logger.info(
+        f"/{command} from {username} (id:{user.id}, {user.first_name}){chat_info}{extra_info}"
+    )
+
 
 # Load scenarios from JSON file
 SCRIPT_DIR = Path(__file__).parent
 SCENARIOS_FILE = SCRIPT_DIR / "scenarios.json"
 
+
 def load_scenarios() -> dict:
     """Load scenarios from JSON file."""
     with open(SCENARIOS_FILE, "r", encoding="utf-8") as f:
         return json.load(f)
+
 
 DATA = load_scenarios()
 SCENARIOS = DATA["scenarios"]
@@ -114,6 +119,7 @@ JOSHUA_QUOTES = [
 # ============================================================================
 # Bot Command Handlers
 # ============================================================================
+
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Send a greeting when /start is issued."""
@@ -178,13 +184,15 @@ async def scenario(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         except ValueError:
             await update.message.reply_text(
                 "⚠️ Please provide a valid number. Example: `/scenario 11`",
-                parse_mode="Markdown"
+                parse_mode="Markdown",
             )
             return
     else:
         # Random scenario
         selected = random.choice(SCENARIOS)
-        log_command(update, "scenario", f"random -> #{selected['id']}: {selected['name']}")
+        log_command(
+            update, "scenario", f"random -> #{selected['id']}: {selected['name']}"
+        )
 
     # Send WOPR video first
     video_path = SCRIPT_DIR / "wopr.mp4"
@@ -194,15 +202,13 @@ async def scenario(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
                 await update.message.reply_video(
                     video=video_file,
                     caption="*W.O.P.R. PROCESSING...*",
-                    parse_mode="Markdown"
+                    parse_mode="Markdown",
                 )
         except Exception as e:
             logger.warning(f"Could not send video: {e}")
 
     message = SCENARIO_TEMPLATE.format(
-        id=selected["id"],
-        name=selected["name"],
-        description=selected["description"]
+        id=selected["id"], name=selected["name"], description=selected["description"]
     )
 
     await update.message.reply_text(message, parse_mode="Markdown")
@@ -214,7 +220,9 @@ async def list_scenarios(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
 
     # Split into chunks to avoid message length limits
     chunk_size = 35
-    chunks = [SCENARIOS[i:i + chunk_size] for i in range(0, len(SCENARIOS), chunk_size)]
+    chunks = [
+        SCENARIOS[i : i + chunk_size] for i in range(0, len(SCENARIOS), chunk_size)
+    ]
 
     for i, chunk in enumerate(chunks):
         start_num = i * chunk_size + 1
@@ -252,7 +260,7 @@ async def describe(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     if not context.args:
         await update.message.reply_text(
             "⚠️ Please provide a scenario number. Example: `/describe 11`",
-            parse_mode="Markdown"
+            parse_mode="Markdown",
         )
         return
 
@@ -266,7 +274,7 @@ async def describe(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     except ValueError:
         await update.message.reply_text(
             "⚠️ Please provide a valid number. Example: `/describe 11`",
-            parse_mode="Markdown"
+            parse_mode="Markdown",
         )
         return
 
@@ -274,7 +282,9 @@ async def describe(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     log_command(update, "describe", f"#{scenario_num}: {selected['name']}")
 
     # Send "thinking" message
-    thinking_msg = await update.message.reply_text("🖥️ *W.O.P.R. ANALYZING SCENARIO...*", parse_mode="Markdown")
+    thinking_msg = await update.message.reply_text(
+        "🖥️ *W.O.P.R. ANALYZING SCENARIO...*", parse_mode="Markdown"
+    )
 
     ollama_prompt = f"""You are a Cold War military analyst in 1983. Briefly describe this nuclear war scenario in 2-3 sentences: "{selected['name']}".
 
@@ -287,28 +297,32 @@ Context: This is a WOPR computer simulation from the early 1980s. Use ONLY the g
         URL = DEEPSEEK_URL
         HEADERS = {
             "Authorization": f"Bearer {DEEPSEEK_API_KEY}",
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
         }
         PAYLOAD = {
             "model": DEEPSEEK_MODEL,
             "messages": [
-                {"role": "system", "content": SYSTEM_PROMPT},  # можно тот же системный промпт
-                {"role": "user", "content": user_prompt}  # но тогда пользовательский промпт должен быть без системной части
+                {
+                    "role": "system",
+                    "content": SYSTEM_PROMPT,
+                },  # можно тот же системный промпт
+                {
+                    "role": "user",
+                    "content": user_prompt,
+                },  # но тогда пользовательский промпт должен быть без системной части
             ],
             "temperature": 0.3,
-            "max_tokens": 150
+            "max_tokens": 150,
         }
     else:
         URL = OLLAMA_URL
-        HEADERS = {
-            "Content-Type": "application/json"
-        }
+        HEADERS = {"Content-Type": "application/json"}
         PAYLOAD = {
             "model": OLLAMA_MODEL,
-            "prompt": prompt,   # для Ollama используем prompt
+            "prompt": prompt,  # для Ollama используем prompt
             "temperature": 0.3,
             "max_tokens": 150,
-            "stream": False
+            "stream": False,
         }
 
     try:
@@ -317,16 +331,22 @@ Context: This is a WOPR computer simulation from the early 1980s. Use ONLY the g
                 URL,
                 headers=HEADERS,
                 json=PAYLOAD,
-                timeout=aiohttp.ClientTimeout(total=60)
+                timeout=aiohttp.ClientTimeout(total=60),
             ) as response:
                 if response.status == 200:
                     result = await response.json()
                     if BACKEND == "deepseek":
-                        ai_description = result["choices"][0]["message"]["content"].strip()
+                        ai_description = result["choices"][0]["message"][
+                            "content"
+                        ].strip()
                     else:
-                        ai_description = result.get("response", "No response generated.")
+                        ai_description = result.get(
+                            "response", "No response generated."
+                        )
                 else:
-                    ai_description = f"Error: {BACKEND} returned status {response.status}"
+                    ai_description = (
+                        f"Error: {BACKEND} returned status {response.status}"
+                    )
     except aiohttp.ClientConnectorError:
         ai_description = "Error: Cannot connect to {BACKEND}. Is it running on {URL}?"
     except asyncio.TimeoutError:
@@ -358,7 +378,7 @@ async def unknown(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     await update.message.reply_text(
         "❓ Unknown command. Type /help for available commands.\n\n"
         "_SHALL WE PLAY A GAME?_",
-        parse_mode="Markdown"
+        parse_mode="Markdown",
     )
 
 
@@ -378,6 +398,7 @@ async def error_handler(update: object, context: ContextTypes.DEFAULT_TYPE) -> N
 # ============================================================================
 # Main Entry Point
 # ============================================================================
+
 
 def main() -> None:
     """Start the bot."""
@@ -402,10 +423,7 @@ def main() -> None:
     # Start the Bot
     print("🖥️  WOPR ONLINE - SHALL WE PLAY A GAME?")
     print("Press Ctrl+C to stop.")
-    application.run_polling(
-        allowed_updates=Update.ALL_TYPES,
-        drop_pending_updates=True
-    )
+    application.run_polling(allowed_updates=Update.ALL_TYPES, drop_pending_updates=True)
 
 
 if __name__ == "__main__":
